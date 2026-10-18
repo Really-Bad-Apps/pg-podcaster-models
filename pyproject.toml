@@ -1,0 +1,44 @@
+[project]
+name = "pg-podcaster-models"
+version = "0.0.1"
+authors = [
+  { name="Jason Mazza" },
+]
+description = "Shared data models for the Podcast Guru podcaster portal (podcaster.podcastguru.io)"
+keywords = ["podcast", "podcastguru", "models"]
+readme = "README.md"
+requires-python = ">=3.12"
+license = {text = "MIT License"}
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+# CRITICAL — private git deps MUST use TOKEN-FREE URLs here. Never embed
+# {env:CR_PAT} in this list: hatchling expands it at wheel build time and
+# bakes the live PAT into the wheel's .dist-info/METADATA Requires-Dist,
+# leaking a valid credential into every published image. Auth belongs at
+# install time (see the README Installation section + uv-supply-chain-hardening).
+dependencies = [
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.metadata]
+# Required if ANY dependency is a direct URL reference (e.g., a GitHub repo
+# via `pkg @ git+https://...`). Harmless when none are present.
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/pg_podcaster_models"]
+
+[tool.pytest.ini_options]
+# REQUIRED. The venv lives at the project root (bin/, lib/, include/), so an
+# unconstrained `pytest` collects the venv's own site-packages tests.
+testpaths = ["tests"]
+
+[project.urls]
+Homepage = "https://github.com/Really-Bad-Apps/pg-podcaster-models"
+Issues = "https://github.com/Really-Bad-Apps/pg-podcaster-models/issues"
