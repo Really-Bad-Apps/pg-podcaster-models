@@ -26,10 +26,15 @@ pg-podcaster-models @ git+https://github.com/Really-Bad-Apps/pg-podcaster-models
 ## Usage
 
 ```python
-import pg_podcaster_models
+from pg_podcaster_models import DashboardSummary
 
-# Add usage examples here
+summary = DashboardSummary(generated_at=1700000000)
+print(summary.to_dict())  # {"generated_at": 1700000000, "podcasts": []}
 ```
+
+`DashboardSummary` is shared by the backend, Python API client, and MCP
+server. The TypeScript client mirrors its wire shape. v1 returns an empty
+podcast list; `generated_at` is an integer Unix timestamp in seconds.
 
 ## Development
 
