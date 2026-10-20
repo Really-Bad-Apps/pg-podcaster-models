@@ -74,3 +74,9 @@ MIT License
 ## Author
 
 Jason Mazza
+
+## Podcast metadata
+
+`PodcastInfo` contains `id`, `name`, and nullable `artwork_url`.
+`PodcastLookup` represents `found` (with a podcast) or `pending` (with
+`retry_after` seconds); it supports `to_dict()` and `from_dict()`.

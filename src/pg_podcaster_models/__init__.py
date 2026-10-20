@@ -3,7 +3,8 @@ Shared data models for the Podcast Guru podcaster portal (podcaster.podcastguru.
 """
 
 from .dashboard import DashboardSummary
+from .podcast import PodcastInfo, PodcastLookup
 
-__version__ = "0.0.2"
+__version__ = "0.0.3"
 
-__all__ = ["DashboardSummary"]
+__all__ = ["DashboardSummary", "PodcastInfo", "PodcastLookup"]
