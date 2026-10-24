@@ -9,6 +9,7 @@ class PodcastInfo:
     id: str
     name: str
     artwork_url: str | None = None
+    overview: dict[str, Any] | None = None
 
 
 @dataclass
@@ -27,6 +28,7 @@ class PodcastLookup:
             podcast = data["podcast"]
             return cls(status="found", podcast=PodcastInfo(
                 id=podcast["id"], name=podcast["name"], artwork_url=podcast.get("artwork_url"),
+                overview=podcast.get("overview"),
             ))
         if status == "pending":
             return cls(status="pending", retry_after=int(data.get("retry_after") or 3))
